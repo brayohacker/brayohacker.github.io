@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power bi</title>
+    <link rel="stylesheet" href="style.css">
+      <!-- font awesome cdn link  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+    --black:#130f40;
+    --white:#fff;
+    --gradient:linear-gradient(#ec008c, #fc6767);
+    --background:rgba(255,255,255,.1);
+    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+    --border:.1rem solid rgba(255,255,255,.1);
+    --border-top:.1rem solid rgba(255,255,255,.3);
+    --border-left:.1rem solid rgba(255,255,255,.3);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 10rem;
+}
+
+html::-webkit-scrollbar{
+    width:1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background:var(--gradient);
+}
+
+html::-webkit-scrollbar-thumb{
+    background:var(--white);
+    border-radius: 5rem;
+}
+
+section{
+    padding:2rem 9%;
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2.5rem;
+}
+
+.heading span{
+    background:var(--background);
+    border-radius: .5rem;
+    border:var(--border);
+    border-top:var(--border-top);
+    border-left:var(--border-left);
+    font-size: 4rem;
+    color:var(--white);
+    padding:.5rem 1.5rem;
+    text-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    box-shadow: var(--box-shadow);
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    transition: .2s linear;
+    background:var(--white);
+    color:var(--black);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+
+}
+
+.btn:hover{
+    letter-spacing: .1rem;
+}
+
+.gradient-background{
+    height: 100%;
+    width: 100%;
+    background: var(--gradient);
+    position: fixed;
+    top:0; left: 0;
+    z-index: -1;
+    overflow:hidden;
+}
+
+.gradient-background .animated-box{
+    position: absolute;
+    background:rgba(255,255,255,.2);
+    display: block;
+    pointer-events: none;
+    border-radius: .5rem;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        opacity: 0;
+        transform:scale(0) translateY(-200%) rotate(0deg);
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform:scale(1) translateY(-500%) rotate(360deg);
+    }
+}
+
+.header{
+    position: fixed;
+    top:1.5rem; left:50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 95%;
+    background: var(--background);
+    border:var(--border);
+    border-top:var(--border-top);
+    border-left:var(--border-left);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+    padding:2rem;
+    border-radius: .5rem;
+    backdrop-filter: blur(.4rem);
+}
+
+.header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color:var(--white);
+    text-transform: uppercase;
+}
+
+.header .logo i{
+    color:var(--black);
+}
+
+.header .navbar a{
+    font-size: 1.7rem;
+    margin-left: 2rem;
+    color:var(--white);
+}
+
+.header .navbar a:hover{
+    color:var(--black);
+}
+
+#menu-btn{
+    font-size: 3rem;
+    cursor: pointer;
+    color:var(--white);
+    display: none;
+}
+
+.home{
+    height: 100vh;
+    padding:7rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .content{
+    width: 75rem;
+    text-align: center;
+}
+
+.home .content h3{
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 4rem;
+    line-height: 1.8;
+    text-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+.home .content p{
+    font-weight: 300;
+    color: var(--white);
+    font-size: 2rem;
+    line-height: 1.8;
+    padding:1rem 0;
+}
+
+.features .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .features .box-container .box{
+    margin:1rem;
+    border-radius: .5rem;
+    text-align: center;
+    background:rgba(237, 23, 111,.05);
+    padding:1rem;
+    flex:1 1 30rem;
+    cursor: pointer;
+  }
+  
+  .features .box-container .box i{
+    color:var(--red);
+    font-size: 5rem;
+    padding:1rem;
+  }
+  
+  .features .box-container .box h3{
+    color:var(--black);
+    font-size: 2.4rem;
+  }
+  
+  .features .box-container .box p{
+    color:#666;
+    font-size: 1.5rem;
+    padding:1rem;
+  }
+  
+  .features .box-container .box:hover{
+    background:var(--gradient);
+  }
+  
+  .features .box-container .box:hover > *{
+    color:#fff;
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* media queries */
+
+@media (max-width:991px){
+
+    html{
+      font-size: 55%;
+    }
+  
+    header{
+      padding:2rem 4%;
+    }
+  
+    section{
+      padding:3rem 4%;
+    }
+  
+    .usage .row{
+      flex-flow: column;
+    }
+  
+    .usage .row .divider{
+      display: none;
+    }
+  
+    .usage .row .box-container .box{
+      text-align: center;
+    }
+  
+  }
+  
+  @media (max-width:768px){
+  
+    #menu-bar{
+      display: block;
+    }
+  
+    header .navbar{
+      position: absolute;
+      top:100%; left: 0; right:0;
+      background:var(--black);
+      border-top: .1rem  solid #fff3;
+      padding:1rem 2rem;
+      clip-path:polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  
+    header .navbar.nav-toggle{
+      clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  
+    header .navbar a{
+      display: block;
+      margin:1.5rem 0;
+      padding:1rem;
+      background:var(--gradient);
+      text-align: center;
+      border-radius: .5rem;
+    }
+  
+    header .navbar a:hover{
+      color:var(--black);
+    }
+  
+    .fa-times{
+      transform: rotate(180deg);
+    }
+  
+    .home .content h3{
+      font-size: 4rem;
+    }
+  
+    .home .content p{
+      font-size: 1.5rem;
+    }
+  
+    .about .row .content{
+      text-align: center;
+    }
+  
+    .about .row .content .buttons a{
+      width:100%;
+    }
+  
+    .about .row .content .buttons a:last-child{
+      margin:1rem 0;
+    }
+  
+  }
+  
+  @media (max-width:400px){
+  
+    html{
+      font-size: 50%;
+    }
+  
+    .heading{
+      font-size: 3.5rem;
+    }
+  
+  }
+
+  /* media queries  */
+
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+
+    section{
+        padding:2rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    #menu-btn{
+        display: initial;
+        transition: .2s linear;
+    }
+
+    #menu-btn.fa-times{
+        transform: rotate(180deg);
+    }
+
+    .header .navbar{
+        position: absolute;
+        top:115%; left:0; right:0;
+        background:var(--gradient);
+        border-radius: .5rem;
+        transition: .3s linear;
+        box-shadow: var(--box-shadow);
+        padding:.5rem 1.5rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .header .navbar a{
+        font-size: 2rem;
+        display: block;
+        background:var(--background);
+        border-radius: .5rem;
+        margin:1.2rem 0;
+        padding:1.5rem;
+        border:var(--border);
+        border-top:var(--border-top);
+        border-left:var(--border-left);
+        box-shadow: var(--box-shadow);
+    }
+
+    .home .content h3{
+        font-size: 3.5rem;
+    }
+
+    .home .content p{
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+    .heading span{
+        font-size: 3rem;
+    }
+
+}
+
+</style>
+<body>
+     <!-- gradeint background  -->
+
+<div class="gradient-background"></div> 
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-graduation-cap"></i> KSHORTSFILMFLIX.edu Power-bi </a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="../index.html">Main page</a>
+
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+<!--home-strt-->
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Discover a new way of learning</h3>
+        <p> "Research suggests that on average,students retain 25-60% more material when learning online compared to only 8-10% in a classroom." -World Economic Forum</p>
+        <a href="https://www.youtube.com/@kshorts_filmflix" class="btn">My Channel</a>
+    </div>
+
+</section>
+<!--home-end-->
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading">app features</h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>Microsoft Power BI Cookbook</h3>
+            <p>You will be guided through the chapters about the prerequisites. However, in order to
+work through the chapters, along with other components, you will primarily require
+the following:
+Power BI Desktop (Free download): Recommended four-core CPU and
+minimum 1 GB of RAM
+Windows 7-10+ or Windows Server 2008R2–2012R2</p>
+            <a href="powerbibooks/Microsoft Power BI Cookbook.pdf" download="Programming Python Fourth Edition"  class="btn"> Download</a>
+        </div>
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>Microsoft ebook Introducing Power BI</h3>
+            <p>Microsoft introduced the idea of Self-Service
+Business Intelligence (BI) back in 2009,
+announcing Power Pivot for Microsoft Excel
+2010. Strangely, at that time, it did not make big
+announcements, hold conferences, or undertake
+a big marketing campaign for it. Everything
+started slowly, with some enthusiastic users
+adopting the new technology, but the vast
+majority of people did not even know about its
+existence</p>
+            <a href="powerbibooks/Microsoft_Press_ebook_Introducing_Power_BI_PDF_mobile.pdf" class="btn">Download</a>
+        </div>
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>PBI_E-Book</h3>
+            <p>A Business Intelligence tool takes data from a Data warehouse to generate reports and help the end user to make informed decision .</p>
+            <a href="powerbibooks/PBI_E-Book.pdf" class="btn">Download</a>
+        </div>
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>Pro Power BI Desktop</h3>
+            <p>Business intelligence (BI) is a concept that has been around for many years. Until recently, it has too often
+                been a domain reserved for large corporations with teams of dedicated IT specialists. All too frequently, this
+                has meant developing complex solutions using expensive products on timescales that did not meet business
+                needs. All this has changed with the advent of self-service business intelligence.</p>
+            <a href="powerbibooks/Pro Power BI Desktop.pdf" class="btn">Download</a>
+        </div>
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>Beginning_DAX_with_Power_BI</h3>
+            <p>The aim of this book is to help you learn how you can use the DAX language to improve
+                your data modelling capability using tools such as Microsoft Power BI, Excel Power
+                Pivot, and SSAS Tabular. This book will be particularly useful if you already have a good
+                knowledge of T-SQL, although this is not essential.</p>
+            <a href="powerbibooks/Beginning_DAX_with_Power_BI_The_SQL.pdf" class="btn">download</a>
+        </div>
+        <div class="box">
+            <i class="far fa-chart-bar"></i>
+            <h3>data analysis expressions</h3>
+            <p>The Data Analysis Expressions (DAX) language is a library of functions and operators that
+                can be combined to build formulas and expressions. This section provides topics that
+                describe function syntax and other attributes of the DAX language.
+                For an overview of how you can use DAX formulas, see Getting Started with Data
+                Analysis Expressions (DAX).</p>
+            <a href="powerbibooks/data analysis expressions - dax - reference.pdf"btn">Download</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
+<script>
+    let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () =>{
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+}
+
+window.onscroll = () =>{
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+}
+
+// animated background 
+
+function createBox() {
+
+    let span = document.createElement('span');
+
+    span.classList.add('animated-box');
+
+    let size = Math.random() * 80;
+
+    span.style.height = 40 + size + 'px';
+    span.style.width = 40 + size + 'px';
+
+    span.style.top = Math.random() * innerHeight + 'px';
+    span.style.left = Math.random() * innerWidth + 'px';
+
+    document.querySelector('.gradient-background').appendChild(span);
+
+    setTimeout(() =>{
+        span.remove();
+    },3000)
+
+}
+
+setInterval(createBox, 400);
+</script>
+    
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
